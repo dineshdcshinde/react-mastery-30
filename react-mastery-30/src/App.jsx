@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Home from "./Days/Day13/componenets/pages/Home";
+import Fifteen from "./Days/Day13/componenets/pages/Fifteen";
 // import Twelve from "./Days/Twelve";
 // import Eleven from "./Days/Eleven";
 // import Ten from "./Days/Ten";
@@ -30,7 +31,8 @@ function App() {
         {/* <Ten /> */}
         {/* <Eleven /> */}
         {/* <Twelve /> */}
-        <Home />
+        {/* <Home /> FourTenn */}
+        <Fifteen/>
         
       </div>
     </>
