@@ -1,34 +1,66 @@
-import React, { useState, useEffect } from "react";
-import reactSvg from "../../../assets/react.svg";
+import React, { useState, useEffect, useCallback } from "react";
+import _ from "lodash";
 import { nanoid } from "nanoid";
 const Seventeen = () => {
   const [pageNumber, setPageNumber] = useState(3);
   const [photoData, setPhotoData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [fetching, setFetching] = useState(false);
 
+  // const getPhotos = async () => {
+  //   setLoading(true);
+  //   const photos = await fetch(
+  //     `https://picsum.photos/v2/list?page=${pageNumber}&limit=10`
+  //   );
+  //   const data = await photos.json();
+  //   setPhotoData((prev) => [...prev, ...data]);
+  //   setLoading(false);
+  // };
+
+  /* Solve that jumping issue */
   const getPhotos = async () => {
+    if (fetching) return;
+
+    setFetching(true);
     setLoading(true);
-    const photos = await fetch(
-      `https://picsum.photos/v2/list?page=${pageNumber}&limit=10`
-    );
-    const data = await photos.json();
-    setPhotoData((prev) => [...prev, ...data]);
-    setLoading(false);
+
+    setTimeout(async () => {
+      const res = await fetch(
+        `https://picsum.photos/v2/list?page=${pageNumber}&limit=10`
+      );
+      const data = await res.json();
+
+      setPhotoData((prev) => [...prev, ...data]);
+      setLoading(false);
+      setFetching(false);
+    }, 800);
   };
 
   useEffect(() => {
     getPhotos();
   }, [pageNumber]);
 
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      setPageNumber((prev) => prev + 1);
-    }
-  };
-  console.log(pageNumber);
+  // const handleScroll = () => {
+  //   if (
+  //     window.innerHeight + document.documentElement.scrollTop + 1 >=
+  //     document.documentElement.scrollHeight
+  //   ) {
+  //     setPageNumber((prev) => prev + 1);
+  //   }
+  // };
+
+  /* use callback and debounce to handle avoid api */
+  const handleScroll = useCallback(
+    _.debounce(() => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 10 >=
+        document.documentElement.scrollHeight
+      ) {
+        if (!fetching) setPageNumber((prev) => prev + 1);
+      }
+    }, 200),
+    [fetching]
+  );
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
