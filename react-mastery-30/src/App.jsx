@@ -1,6 +1,8 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import Eighteen from "./Days/Eighteen";
+
 import Seventeen from "./Days/Day13/componenets/Seventeen";
 // import Sixteen from "./Days/Sixteen";
 // import Home from "./Days/Day13/componenets/pages/Home";
@@ -37,6 +39,10 @@ function App() {
         {/* <Fifteen/> */}
         {/* <Sixteen/> */}
         <Seventeen />
+        <Eighteen/>
+        
+        
+        
       </div>
     </>
   );
