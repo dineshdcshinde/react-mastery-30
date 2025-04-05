@@ -1,9 +1,10 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import Eighteen from "./Days/Eighteen";
 
-import Seventeen from "./Days/Day13/componenets/Seventeen";
+import Nineteen from "./Days/Nineteen";
+// import Eighteen from "./Days/Eighteen";
+// import Seventeen from "./Days/Day13/componenets/Seventeen";
 // import Sixteen from "./Days/Sixteen";
 // import Home from "./Days/Day13/componenets/pages/Home";
 // import Fifteen from "./Days/Day13/componenets/pages/Fifteen";
@@ -22,7 +23,7 @@ import Seventeen from "./Days/Day13/componenets/Seventeen";
 function App() {
   return (
     <>
-      <div className="min-h-screen w-full bg-[#3c3c3c] text-white">
+      <div className="min-h-screen w-full bg-[#3c3c3c] text-white ">
         {/* <One /> */}
         {/* <Two/> */}
         {/* <Three/> */}
@@ -38,8 +39,9 @@ function App() {
         {/* <Home /> FourTenn */}
         {/* <Fifteen/> */}
         {/* <Sixteen/> */}
-        <Seventeen />
-        <Eighteen/>
+        {/* <Seventeen /> */}
+        {/* <Eighteen/> */}
+        <Nineteen/>
         
         
         
